@@ -5,15 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="/styles/loginStyles.css">
+
 </head>
 <body>
     <div class="login-container">
         <h1>Login</h1>
-        <form action="/login" method="post">           
-            <input type="text" id="email" name="email" placeholder="Correo" required >
-             <input type="password" id="password" name="password" placeholder="Contraseña" required required minlength="10">
+        <form action="/views/ladingPage.html" method="submit">         
+            <div>
+                <input type="text" id="email" name="email" placeholder="Correo" required>
+                <span class="validation-message" id="email-validation"></span>
+            </div>
+            <div>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required minlength="10">
+                <span class="validation-message" id="password-validation"></span>
+            </div>
             <div class="forgot-password">
-                <a href="/recoveryPassword.html">¿Olvidaste tu contraseña?</a>
+                <a href="/views/recoveryPassword.html">¿Olvidaste tu contraseña?</a>
             </div> 
             <input type="submit" value="Sign in">
             <div class="divider">
@@ -21,7 +28,7 @@
                     <span class="divider-text">O inicia sesión con</span>
                 </div>
                 <div class="social-icons">
-                    <img src="/images/facebook.png" alt="Facebook" class="social-icon" title="Iniciar sesión con Facebook">
+                    <a href="https://es-la.facebook.com/login/"><img src="/images/facebook.png" alt="Facebook" class="social-icon" title="Iniciar sesión con Facebook"></a>
                     <img src="/images/google.png" alt="Google" class="social-icon" title="Iniciar sesión con Google">
                     <img src="/images/twitter.png" alt="Twitter" class="social-icon" title="Iniciar sesión con Twitter">
                 </div>
