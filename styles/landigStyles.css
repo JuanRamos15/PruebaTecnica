@@ -1,0 +1,26 @@
+body {
+    margin-bottom: 80px; 
+  }
+/*footer */
+footer {
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-color: #333;
+    color: white; 
+   
+  }
+
+  /* Estilos para las imágenes */
+  .social-icon {
+    width: 30px; 
+    margin: 0 5px; 
+  }
+  /*web responsive*/
+@media screen and (max-width: 600px) {
+    .login-container {
+        max-width: none;
+    }
+}

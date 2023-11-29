@@ -67,10 +67,6 @@ body {
     color: #888;
     margin-top: 5px;
 }
-.validation-message {
-    color: red;
-    font-size: 14px;
-}
 /*iconos*/
 .social-icons {
     margin-top: 10px;
@@ -96,3 +92,17 @@ input {
     border-radius: 4px;
     box-sizing: border-box;
 }
+/*footer */
+footer {
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    background-color: #333; 
+    color: white; 
+    padding: 15px; 
+  }
+
+  .social-icon {
+    width: 30px; 
+    margin: 0 5px;
+  }
