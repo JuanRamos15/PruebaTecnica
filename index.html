@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/styles/loginStyles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+    <script type="module" src="/scripts/firebase-config.js"></script>
+    <script type="module" src="/scripts/auth-scripts.js"></script>
+</head>
+<body>
+    <div id="app" class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm" action="/views/ladingPage.html" method="submit">
+            <div>
+                <input type="text" id="email" name="email" placeholder="Correo" required>
+                <span class="validation-message" id="email-validation"></span>
+            </div>
+            <div>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required minlength="10">
+                <span class="validation-message" id="password-validation"></span>
+            </div>
+            <div class="forgot-password">
+                <a href="/views/recoveryPassword.html">¿Olvidaste tu contraseña?</a>
+            </div> 
+            <input type="submit" value="Sign in">
+            <div class="divider">
+                <div class="or-sign-in">
+                    <span class="divider-text">O inicia sesión con</span>
+                </div>
+                <div class="social-icons">
+                    <a href="https://es-la.facebook.com/login/"><img src="/images/facebook.png" alt="Facebook" class="social-icon" title="Iniciar sesión con Facebook"></a>
+                    <img src="/images/google.png" alt="Google" class="social-icon" title="Iniciar sesión con Google" @click="signInWithGoogle">
+                    <img src="/images/twitter.png" alt="Twitter" class="social-icon" title="Iniciar sesión con Twitter">
+                </div>
+            </div>
+
+            <div v-if="showLoading" class="loading-message">
+                Esperando inicio de sesión con Google...
+            </div>
+            <div v-else-if="showSuccess" class="success-message">
+                ¡Inicio de sesión con Google exitoso!
+            </div>
+        </form>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                showLoading: false,
+                showSuccess: false
+            },
+            methods: {
+                signInWithGoogle() {
+                    this.showLoading = true;
+
+                    var provider = new firebase.auth.GoogleAuthProvider();
+                    firebase.auth().signInWithPopup(provider)
+                        .then((result) => {
+                            console.log(result.user);
+                            this.showLoading = false;
+                            this.showSuccess = true;
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            this.showLoading = false;
+                        });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
